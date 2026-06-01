@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+test_smoke.py
+.dockerignore
+Dockerfile
+README.md

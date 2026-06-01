@@ -1,0 +1,37 @@
+# Néovolt Grid+ — orchestration locale du volet ILD
+# Lancer depuis volet-ild-dataeng/ :  docker compose up --build
+#
+# L'API tourne dans un conteneur et lit l'entrepôt SQLite monté en LECTURE SEULE.
+# Pré-requis : avoir généré data/processed/neovolt.db (build_warehouse.py).
+services:
+  api:
+    build: ./api
+    container_name: neovolt-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # entrepôt monté en lecture seule (le conteneur ne modifie pas les données)
+      - ../data/processed:/data:ro
+    environment:
+      - NEOVOLT_DB=/data/neovolt.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+# --- CIBLE D'INDUSTRIALISATION (non activée dans le prototype) ----------------
+# En production, l'entrepôt SQLite est remplacé par PostgreSQL hébergé en UE
+# (souveraineté). Le code API (SQL standard) est portable. Esquisse :
+#
+#  postgres:
+#    image: postgres:16
+#    environment:
+#      POSTGRES_DB: neovolt
+#      POSTGRES_USER: neovolt
+#      POSTGRES_PASSWORD_FILE: /run/secrets/pg_pwd   # secret, jamais en clair
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+# volumes:
+#   pgdata:
