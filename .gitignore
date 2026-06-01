@@ -25,6 +25,7 @@ volet-datascience/models/features.csv
 # Dashboards HTML générés (~4,5 Mo chacun, Plotly embarqué) + exports KPI -> régénérables
 volet-analyst/dashboards/*.html
 volet-analyst/dashboards/*.csv
+volet-cpid-pilotage/*.html
 # (les figures PNG agrégées SONT versionnées : elles servent au rapport et aux slides)
 scripts/_out/
 
