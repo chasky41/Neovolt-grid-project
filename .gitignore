@@ -18,6 +18,9 @@ data/processed/*.sqlite
 volet-datascience/models/*.pkl
 volet-datascience/models/*.joblib
 *.mlflow
+# Sorties modèles contenant des PDL identifiables + label fraude (RGPD) -> régénérables
+volet-datascience/suspects_priorises.csv
+volet-datascience/models/features.csv
 
 # Sorties / figures générées (régénérables)
 volet-analyst/figures/
