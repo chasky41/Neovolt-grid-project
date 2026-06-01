@@ -1,3 +1,4 @@
 # Dépendances minimales de l'image API (volontairement léger : pas de pandas/sklearn)
-fastapi==0.115.0
-uvicorn==0.30.6
+# Versions corrigées après scan pip-audit (CVE-2024-47874 / CVE-2025-54121 sur starlette)
+fastapi==0.136.3
+uvicorn==0.48.0

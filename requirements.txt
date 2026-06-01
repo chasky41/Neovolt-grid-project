@@ -11,8 +11,8 @@ scikit-learn==1.5.2
 statsmodels==0.14.4
 # Prévision de séries temporelles (volet Data Scientist)
 # prophet  # optionnel, lourd : à activer si besoin
-# API / exposition (volet ILD)
-fastapi==0.115.0
-uvicorn==0.30.6
+# API / exposition (volet ILD) — versions corrigées suite au scan pip-audit (CVE starlette)
+fastapi==0.136.3
+uvicorn==0.48.0
 # Suivi d'expérimentations (MLOps, volet Data Scientist)
 # mlflow  # optionnel : à activer pour le suivi formel
