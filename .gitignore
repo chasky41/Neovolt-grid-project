@@ -22,8 +22,10 @@ volet-datascience/models/*.joblib
 volet-datascience/suspects_priorises.csv
 volet-datascience/models/features.csv
 
-# Sorties / figures générées (régénérables)
-volet-analyst/figures/
+# Dashboards HTML générés (~4,5 Mo chacun, Plotly embarqué) + exports KPI -> régénérables
+volet-analyst/dashboards/*.html
+volet-analyst/dashboards/*.csv
+# (les figures PNG agrégées SONT versionnées : elles servent au rapport et aux slides)
 scripts/_out/
 
 # Secrets — JAMAIS de secrets en clair dans le repo (DevSecOps)
