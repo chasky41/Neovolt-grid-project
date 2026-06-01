@@ -1,0 +1,18 @@
+# Néovolt Grid+ — dépendances Python (prototype)
+# Coeur data
+pandas==2.1.4
+numpy==1.26.3
+scipy==1.15.3
+# Visualisation
+matplotlib==3.9.3
+seaborn==0.13.2
+# Machine learning / stats
+scikit-learn==1.5.2
+statsmodels==0.14.4
+# Prévision de séries temporelles (volet Data Scientist)
+# prophet  # optionnel, lourd : à activer si besoin
+# API / exposition (volet ILD)
+fastapi==0.115.0
+uvicorn==0.30.6
+# Suivi d'expérimentations (MLOps, volet Data Scientist)
+# mlflow  # optionnel : à activer pour le suivi formel

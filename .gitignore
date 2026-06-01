@@ -1,0 +1,33 @@
+# Environnements Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Données : NE PAS versionner les CSV bruts (volumineux + données personnelles RGPD)
+# -> fournis via OneDrive, voir data/README.md
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.parquet
+
+# Modèles entraînés (volumineux -> OneDrive)
+volet-datascience/models/*.pkl
+volet-datascience/models/*.joblib
+*.mlflow
+
+# Sorties / figures générées (régénérables)
+volet-analyst/figures/
+scripts/_out/
+
+# Secrets — JAMAIS de secrets en clair dans le repo (DevSecOps)
+.env
+*.key
+*.pem
+secrets/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
