@@ -10,6 +10,9 @@ __pycache__/
 data/raw/*.csv
 data/processed/*.csv
 data/processed/*.parquet
+# Entrepôt SQLite : volumineux (~66 Mo) + contient des données personnelles (RGPD) -> régénérable via build_warehouse.py
+data/processed/*.db
+data/processed/*.sqlite
 
 # Modèles entraînés (volumineux -> OneDrive)
 volet-datascience/models/*.pkl
