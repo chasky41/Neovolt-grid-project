@@ -1,0 +1,9 @@
+US6 - Modèle de prévision de consommation
+=========================================
+
+Meilleur modèle : Random Forest
+
+          modele    MAE_kWh    RMSE_kWh    MAPE_%       R2
+   Random Forest 605.686711 1346.072361  8.627804 0.963843
+    Baseline J-7 761.892264 1776.574808 11.357550 0.937016
+Ridge Regression 740.472936 1475.775576 15.738028 0.956539
