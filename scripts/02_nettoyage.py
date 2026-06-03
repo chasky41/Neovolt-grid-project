@@ -132,8 +132,22 @@ def main():
     # ----------------------------------------------------------------- ÉCRITURE
     f1 = os.path.join(OUT_DIR, "releves_propres.csv")
     f2 = os.path.join(OUT_DIR, "conso_enrichie.csv")
-    rc.to_csv(f1, index=False)
-    enr.to_csv(f2, index=False)
+
+    def ecrire(df, chemin):
+        """Écrit le CSV, avec un message clair si le fichier est ouvert ailleurs."""
+        try:
+            df.to_csv(chemin, index=False)
+        except PermissionError:
+            nom = os.path.basename(chemin)
+            print("\n" + "!" * 60)
+            print(f"  IMPOSSIBLE d'écrire {nom} : le fichier est OUVERT")
+            print("  dans un autre programme (Excel, Power BI, apercu...).")
+            print(f"  -> Ferme {nom} puis relance.")
+            print("!" * 60)
+            sys.exit(1)
+
+    ecrire(rc, f1)
+    ecrire(enr, f2)
     log("## 3. Fichiers produits\n")
     log(f"- `data/processed/releves_propres.csv` ({len(rc):,} lignes)")
     log(f"- `data/processed/conso_enrichie.csv` ({len(enr):,} lignes, table d'analyse)")
