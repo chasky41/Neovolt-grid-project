@@ -47,3 +47,7 @@ volet-analyst/powerbi/*.csv
 
 # Fichiers nettoyes separes : donnees personnelles + volumineux (RGPD) -> regenerables, OneDrive
 donnees_nettoyees_separees/*.csv
+
+# Archives locales
+*.rar
+*.zip
