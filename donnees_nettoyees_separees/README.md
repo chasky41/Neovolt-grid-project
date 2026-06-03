@@ -16,15 +16,24 @@ Ce dossier contient une version **nettoyée** de chacun des 10 fichiers d'origin
 | releves_consommation_clean.csv | releves_consommation.csv | 511 700 |
 | releves_horaires_echantillon_clean.csv | releves_horaires_echantillon.csv | 21 600 |
 
-## Règles de nettoyage appliquées
-- **Espaces superflus** retirés dans les colonnes texte.
-- **Doublons** supprimés (lignes identiques + doublons de clé, ex. id_client, id_pdl).
-- **Valeurs impossibles mises à vide** : consommations négatives, surfaces ou puissances <= 0,
-  notes de satisfaction hors 1-5, durées négatives.
-- **Dates validées** (format vérifié).
-- **Météo** : lignes où la température min > max corrigées (échange).
-- **L'information manquante n'est jamais inventée** : on laisse vide et on le signale
-  (exemple : `nb_personnes_foyer` manquant pour 274 clients).
+## Règles de nettoyage appliquées (méthode `na.omit`, alignée sur l'approche R de l'équipe)
+1. **Espaces superflus** retirés dans les colonnes texte.
+2. **Doublons** supprimés (lignes identiques).
+3. **Types convertis** : dates au format Date, colonnes de mesure en numérique.
+4. **Lignes incomplètes supprimées** (`na.omit` / `dropna`) -> fichiers **sans aucune valeur manquante**.
+5. **Consommation négative** (impossible physiquement) traitée comme manquante, donc supprimée.
+
+Résultat : chaque fichier est **sans valeur manquante et sans doublon**.
+
+### Conséquences à connaître (transparence)
+- `clients` : **700 -> 426 lignes** (274 lignes supprimées car `nb_personnes_foyer` était vide).
+- `releves_consommation` : **512 986 -> 503 830 lignes** (1 286 doublons + 7 870 incomplètes,
+  dont 1 032 consommations négatives).
+- Les autres fichiers étaient déjà complets : inchangés.
+
+> Choix de méthode : on **supprime** les lignes incomplètes (na.omit) plutôt que de les
+> garder. Avantage : des fichiers 100 % propres, simples à exploiter. Limite assumée : on
+> perd un peu d'information (ex. 274 clients). Méthode cohérente avec le reste de l'équipe.
 
 Le détail chiffré, fichier par fichier, est dans **RAPPORT-NETTOYAGE-COMPLET.md**.
 
