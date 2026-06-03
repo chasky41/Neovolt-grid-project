@@ -1,18 +1,28 @@
-# Néovolt Grid+ — dépendances Python (prototype)
+# Néovolt Grid+ — dépendances Python (versions de l'environnement de développement)
+# Installer avec :  pip install -r requirements.txt
+
 # Coeur data
-pandas==2.1.4
-numpy==1.26.3
-scipy==1.15.3
+pandas==3.0.3
+numpy==2.4.6
+scipy==1.17.1
+
 # Visualisation
-matplotlib==3.9.3
+matplotlib==3.10.9
 seaborn==0.13.2
+plotly==5.24.1
+
 # Machine learning / stats
 scikit-learn==1.5.2
 statsmodels==0.14.4
-# Prévision de séries temporelles (volet Data Scientist)
-# prophet  # optionnel, lourd : à activer si besoin
+joblib==1.5.3
+
 # API / exposition (volet ILD) — versions corrigées suite au scan pip-audit (CVE starlette)
 fastapi==0.136.3
 uvicorn==0.48.0
-# Suivi d'expérimentations (MLOps, volet Data Scientist)
-# mlflow  # optionnel : à activer pour le suivi formel
+
+# Génération de PDF (documentation)
+Markdown==3.10.2
+xhtml2pdf==0.2.17
+
+# Sécurité (DevSecOps) — scan de vulnérabilités des dépendances
+pip-audit
