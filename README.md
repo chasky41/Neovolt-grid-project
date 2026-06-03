@@ -9,6 +9,13 @@ sécurisée, prédictive et pilotée**.
 > production : on livre un **prototype crédible** et un **dossier de décision** pour le
 > comité de pilotage.
 
+## 🚀 Collaborateurs : faire tourner le projet en local
+➡️ **Suivez le [Guide d'installation](GUIDE-INSTALLATION.md)** (clone, environnement Python,
+récupération des données, lancement). Démo Windows en double-clic : `demarrer-demo.bat`.
+
+> ⚠️ Les données CSV ne sont **pas** dans le dépôt (volumineuses + RGPD) : récupérez le
+> dossier `donnees/` auprès de l'équipe / via OneDrive (voir le guide, étape 3).
+
 ## Cas d'usage prioritaires (périmètre du prototype)
 1. **Détection d'anomalies / fraude** sur les relevés de compteurs (gisement ROI, enjeu éthique).
 2. **Prévision de consommation** à un horizon utile à l'achat d'énergie (anticipation des pics).
