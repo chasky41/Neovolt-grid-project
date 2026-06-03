@@ -40,3 +40,6 @@ secrets/
 Thumbs.db
 .vscode/
 .idea/
+
+# PDF generes (regenerables depuis les .md via scripts/generer_pdf.py)
+docs/*.pdf
