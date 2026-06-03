@@ -44,3 +44,6 @@ Thumbs.db
 # PDF generes (regenerables depuis les .md via scripts/generer_pdf.py)
 docs/*.pdf
 volet-analyst/powerbi/*.csv
+
+# Fichiers nettoyes separes : donnees personnelles + volumineux (RGPD) -> regenerables, OneDrive
+donnees_nettoyees_separees/*.csv
