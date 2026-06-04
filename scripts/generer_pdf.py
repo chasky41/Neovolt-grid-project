@@ -12,7 +12,9 @@ import os, sys
 import markdown
 from xhtml2pdf import pisa
 
-# Remplacements de caractères "typographiques" par des équivalents sûrs
+# ---------------------------------------------------------------------------
+# Nettoyage des caractères spéciaux non compatibles PDF / encodage
+# ---------------------------------------------------------------------------
 REMP = {
     "’": "'", "‘": "'", "“": '"', "”": '"',
     "–": "-", "—": "-", "…": "...", "→": "->",
@@ -20,6 +22,7 @@ REMP = {
     "•": "-", "≈": "~", "≤": "<=", "≥": ">=",
     "→": "->", "€": "EUR",
 }
+# Style CSS du PDF (mise en forme professionnelle)
 
 CSS = """
 @page { size: a4; margin: 2cm; }

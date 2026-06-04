@@ -20,13 +20,14 @@ except Exception:
     pass
 import numpy as np
 import pandas as pd
-
+# --- Configuration environnement (chemins projet) ---
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.dirname(HERE)
 DATA_DIR = os.environ.get("NEOVOLT_DATA", os.path.normpath(os.path.join(PROJ, "..", "donnees")))
 OUT = os.path.join(PROJ, "donnees_nettoyees_separees")
 os.makedirs(OUT, exist_ok=True)
 REPORT = os.path.join(OUT, "RAPPORT-NETTOYAGE-COMPLET.md")
+# --- Buffer log (console + rapport markdown) ---
 
 buf = io.StringIO()
 def log(*a):

@@ -20,16 +20,21 @@ Sorties (dans data/processed/, NON versionnées — RGPD) :
 
 Usage :  .venv\\Scripts\\python.exe scripts/02_nettoyage.py
 """
+# --- Import des librairies ---
 from __future__ import annotations
 import os
 import io
 import pandas as pd
 import numpy as np
-
+# --- Configuration des chemins projet ---
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.dirname(HERE)
 DATA_DIR = os.environ.get("NEOVOLT_DATA", os.path.normpath(os.path.join(PROJ, "..", "donnees")))
+
+# Dossier de sortie des données nettoyées
 OUT_DIR = os.path.join(PROJ, "data", "processed")
+# Rapport de nettoyage (livrable versionné)
+
 REPORT = os.path.join(PROJ, "docs", "rapport-nettoyage.md")
 os.makedirs(OUT_DIR, exist_ok=True)
 
