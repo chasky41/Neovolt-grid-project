@@ -1,57 +1,69 @@
-# Business case — Programme Néovolt Grid+ (volet Chef de projet)
+# Business case — Programme Néovolt Grid+
 
-> Chiffres calculés (script `business_case.py`), hypothèses explicites et ajustables.
+> Business case aligné avec le volet Chef de Projet IT & Data et le cas d’usage principal retenu : la prévision de consommation.
 
-## 1. Coût de la phase 1 (industrialisation du prototype)
+## 1. Coût estimé du programme
 
-| Poste | Coût |
-|---|---|
-| Équipe data/dev/sécurité (3 profils × 70 j) | 115 500 € |
-| Chef de projet (70 j) | 52 500 € |
-| Expert architecture/sécurité (25 j) | 18 750 € |
-| Prestataire spécialisé (25 j) | 22 500 € |
-| Hébergement cloud UE (6 mois) | 21 000 € |
-| Licences BI (8 utilisateurs / an) | 9 600 € |
-| Licence gouvernance des données (1 an) | 25 000 € |
-| Audit de sécurité externe (forfait) | 18 000 € |
-| **Sous-total** | **282 850 €** |
-| Contingence (15 %) | 42 428 € |
-| **TOTAL phase 1** | **325 278 €** |
+| Poste                                                             |   Coût estimé |
+| ----------------------------------------------------------------- | ------------: |
+| Cadrage projet, ateliers métiers et pilotage                      |      30 000 € |
+| Data engineering : collecte, nettoyage et préparation des données |      85 000 € |
+| Data science : modèle de prévision de consommation                |      70 000 € |
+| Tableaux de bord et aide à la décision                            |      35 000 € |
+| Infrastructure cloud, stockage et sécurité                        |      40 000 € |
+| Gouvernance et qualité des données                                |      25 000 € |
+| Conduite du changement et formation                               |      25 000 € |
+| Tests, recette et amélioration continue                           |      20 000 € |
+| Marge de sécurité projet                                          |      30 000 € |
+| **Budget initial estimé**                                         | **360 000 €** |
 
-→ **325 278 €** vs enveloppe **450 000 €** : on tient dans le budget avec **124 722 € de marge** (rassure la DG, qui craint les dérapages).
+Coût annuel de fonctionnement estimé : **75 000 €**.
 
-- Coût d'exploitation récurrent estimé : **76 600 €/an** (cloud + licences), hors équipe run.
+---
 
-## 2. Gain — réduction des pertes sur fraude
+## 2. Bénéfices annuels attendus
 
-- Taux de fraude **observé** : 3.43% (24/700 PDL) → borne basse (seules les fraudes *confirmées* sont connues).
-- Consommation médiane : 14.5 kWh/j ≈ 5,285 kWh/an (médiane choisie = prudente, la moyenne est gonflée par les industriels).
+| Source de gain                                                                  | Gain annuel estimé |
+| ------------------------------------------------------------------------------- | -----------------: |
+| Optimisation des achats et de la planification énergétique grâce aux prévisions |          135 000 € |
+| Optimisation des interventions terrain                                          |           36 000 € |
+| Gain de temps pour les équipes d’exploitation et de relation client             |           45 000 € |
+| Amélioration de la planification du réseau                                      |           50 000 € |
+| Réduction du risque opérationnel                                                |           25 000 € |
+| **Total des gains annuels estimés**                                             |      **291 000 €** |
+| Coût annuel de fonctionnement                                                   |     **- 75 000 €** |
+| **Gain net annuel estimé**                                                      |      **216 000 €** |
 
-Calcul (hypothèses : sous-facturation 35%, prix 0.15 €/kWh, récupération an 1 40%) :
-- Fraudes estimées sur le parc : 600,000 × 3.43% = **20,571 PDL**
-- Gisement annuel de pertes : **≈ 5 708 016 €**
-- **Récupérable dès l'an 1 (détection précoce) : ≈ 2 283 206 €**
+Les montants présentés correspondent à des estimations destinées à mesurer l'intérêt économique du projet et à comparer les coûts engagés aux bénéfices attendus.
 
-*Le modèle capte 54 % des fraudes en investiguant 5 % des compteurs (lift ×10,8) → l'hypothèse de 40 % de récupération an 1 est prudente.*
+---
 
 ## 3. Retour sur investissement
 
-- Gain net an 1 (récupéré − exploitation) ≈ **2 206 606 €**
-- Investissement phase 1 : 325 278 €
-- **Retour sur investissement : ≈ 1.7 mois.**
-- Gains additionnels NON chiffrés ici (prudence) : réduction des **achats d'énergie d'équilibrage** (prévision des pics), baisse des **coûts d'incidents**, gain de satisfaction client (facturation).
+* Budget initial : **360 000 €**
+* Gain net annuel estimé : **216 000 €**
+* Retour sur investissement estimé : **20 mois**
+* ROI prévisionnel : **18 à 24 mois**
 
-## 4. Analyse de sensibilité (honnêteté sur les hypothèses)
+Le projet présente un retour sur investissement raisonnable tout en apportant des bénéfices organisationnels et opérationnels non directement quantifiables.
 
-| Part récupérable an 1 | Gain récupéré | ROI |
-|---|---|---|
-| 20% | 1 141 603 € | 3.4 mois |
-| 30% | 1 712 405 € | 2.3 mois |
-| 40% | 2 283 206 € | 1.7 mois |
-| 60% | 3 424 810 € | 1.1 mois |
+---
 
-→ Même dans l'hypothèse la plus prudente (20 %), le ROI reste inférieur à un an. La décision est **robuste** aux hypothèses.
+## 4. Priorisation recommandée
 
-## 5. Recommandation de priorisation
+La priorité est donnée au socle data, à la qualité des données et à la prévision de consommation, car ces éléments constituent le fondement de la plateforme Néovolt Grid+ et apportent rapidement de la valeur aux métiers.
 
-**Détection de fraude d'abord, prévision ensuite.** La fraude offre un ROI rapide et mesurable (gisement chiffrable, vérité terrain disponible) qui **finance** la suite ; la prévision (gains réels mais plus diffus) vient en lot 2. Voir le plan de projet.
+La mise en place de tableaux de bord décisionnels et l'amélioration du pilotage opérationnel constituent la deuxième étape du programme.
+
+La détection d'anomalies et de fraudes est considérée comme une évolution future qui pourra être mise en œuvre une fois les données fiabilisées et les premiers usages de la plateforme adoptés.
+
+---
+
+## 5. Projection sur 3 ans
+
+* Gains bruts sur 3 ans : **873 000 €**
+* Coût initial du programme : **- 360 000 €**
+* Coûts de fonctionnement sur 3 ans : **- 225 000 €**
+* **Gain net estimé sur 3 ans : 288 000 €**
+
+Cette projection montre qu'au-delà de l'amélioration du pilotage opérationnel, le programme est capable de générer une valeur durable pour Néovolt tout en restant maîtrisé sur le plan budgétaire.
