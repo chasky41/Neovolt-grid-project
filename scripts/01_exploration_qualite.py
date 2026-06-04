@@ -9,6 +9,7 @@ Usage :
     python scripts/01_exploration_qualite.py
 Le rapport est affiché en console ET écrit dans docs/diagnostic-qualite-donnees.md
 """
+# --- Import des librairies nécessaires ---
 from __future__ import annotations
 import os
 import sys
@@ -22,9 +23,9 @@ PROJ = os.path.dirname(HERE)
 # Données fournies par l'examen, à côté du projet
 DEFAULT_DATA = os.path.normpath(os.path.join(PROJ, "..", "donnees"))
 DATA_DIR = os.environ.get("NEOVOLT_DATA", DEFAULT_DATA)
-
+# Fichier de sortie du rapport
 OUT_MD = os.path.join(PROJ, "docs", "diagnostic-qualite-donnees.md")
-
+# --- Liste des fichiers à analyser ---
 FILES = [
     "clients.csv", "compteurs.csv", "releves_consommation.csv",
     "releves_horaires_echantillon.csv", "meteo.csv", "incidents_reseau.csv",
