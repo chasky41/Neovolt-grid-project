@@ -17,8 +17,10 @@ récupération des données, lancement). Démo Windows en double-clic : `demarre
 > dossier `donnees/` auprès de l'équipe / via OneDrive (voir le guide, étape 3).
 
 ## Cas d'usage prioritaires (périmètre du prototype)
-1. **Détection d'anomalies / fraude** sur les relevés de compteurs (gisement ROI, enjeu éthique).
-2. **Prévision de consommation** à un horizon utile à l'achat d'énergie (anticipation des pics).
+
+1. Prévision de consommation à un horizon utile à l'achat d'énergie (anticipation des pics).
+
+2. Détection d'anomalies / fraude sur les relevés de compteurs comme perspective d'évolution du programme.
 
 Le tout porté par une **chaîne de données** (ingestion → stockage → API → restitution),
 **sécurisée** (analyse de risque, SIEM, conformité RGPD/NIS 2) et **pilotée** (business
@@ -30,9 +32,9 @@ neovolt-grid-plus/
 ├── docs/                     # Tronc commun : cadrage, archi, gouvernance, éthique, exec summary EN
 ├── data/                     # Données (raw NON versionnées — RGPD ; voir data/README.md)
 ├── scripts/                  # Scripts partagés (diagnostic qualité, nettoyage...)
-├── volet-cpid-pilotage/      # Chef de projet IT & Data  (business case, RACI, pilotage)
+├── volet-cpid-pilotage/      # Chef de projet IT & Data   (business case, gouvernance, pilotage)
 ├── volet-analyst/            # Data Analyst              (EDA, segmentation, NLP, dashboards)
-├── volet-datascience/        # Data Scientist            (prévision, détection fraude, MLOps)
+├── volet-datascience/        # Data Scientist             (prévision de consommation, analyse critique, MLOps)
 ├── volet-ild-dataeng/        # Ingénierie Logiciel & Data Eng (pipeline, API, Docker)
 ├── volet-cyber/              # Cybersécurité             (risque, audit, SIEM, runbook, conformité)
 └── livrables-individuels/    # Journaux de bord, notes réflexives, éval par les pairs
