@@ -67,16 +67,12 @@ partout. Je vous montre. »
 - **Relation client** : on a analysé **3 000 réclamations** automatiquement. Satisfaction
   moyenne **2,45 sur 5**, et le sujet n°1 de mécontentement, c'est la **facturation**. »
 
-### 3.3 — La détection de fraude (Data Scientist) ⏱️2 min
-🖱️ Ouvre [volet-datascience/figures/evaluation_fraude.png](volet-datascience/figures/evaluation_fraude.png).
-🎤 « Le cœur intelligent du projet. On n'avait que **24 fraudes confirmées** : trop peu pour
-"apprendre" classiquement. On a donc fait de la **détection d'anomalies** : le modèle classe
-les compteurs du plus au moins suspect.
+### 3.3 — La prévision de consommation (Data Scientist) ⏱️2 min
+Nous avons développé un modèle de prévision de consommation à partir des données historiques et météorologiques.
 
-Le résultat : en contrôlant seulement **5 % des compteurs**, on retrouve **plus de la moitié
-des fraudes** — c'est **10 fois plus efficace** qu'un contrôle au hasard. Et chaque alerte vient
-avec **sa raison**. Point important : c'est une **aide à la décision**, un **humain tranche** —
-on n'accuse personne automatiquement. »
+Plusieurs modèles ont été comparés à l'aide des métriques MAE, RMSE, MAPE et R².
+
+Le modèle retenu atteint un MAPE inférieur à 10 %, ce qui permet d'obtenir des prévisions suffisamment fiables pour aider à l'anticipation des pics de consommation et à la planification énergétique.
 
 ### 3.4 — La sécurité (Cybersécurité) ⏱️2 min
 🖱️ Ouvre [docs/rapport-siem.md](docs/rapport-siem.md) + [l'image SIEM](volet-cyber/figures/siem_brute_force.png).
@@ -88,11 +84,12 @@ risque de fuite. On a aussi **scanné nos dépendances** et **corrigé 3 failles
 
 ### 3.5 — Le pilotage & le budget (Chef de projet) ⏱️1,5 min
 🖱️ Montre l'onglet **dashboard de pilotage**.
-🎤 « Enfin, on a chiffré tout ça. Le projet tient dans l'**enveloppe de 450 000 €** — on est à
-**325 000 €**, avec de la marge. Et surtout : les fraudes récupérables représentent environ
-**5,7 millions d'euros par an**, dont une grande part dès la première année. Le **retour sur
-investissement est d'environ 1,7 mois**. On a aussi défini la gouvernance des données et un
-plan pour faire adopter l'outil. »
+🎤 « Enfin, on a chiffré tout ça. Le projet est estimé à 360 000 €.
+
+Les gains annuels estimés sont de 291 000 €,
+pour un gain net annuel de 216 000 € après prise en compte des coûts de fonctionnement.
+
+Le retour sur investissement est estimé à environ 20 mois, ce qui reste très favorable pour un projet de transformation data. »
 
 ---
 
