@@ -160,7 +160,7 @@ flowchart LR
 | **J4 — Jeu 04/06** | Intégration & consolidation | Assemblage testé, dossier + exec summary EN rédigés |
 | **J5 — Ven 05/06** | Finalisation & dépôt | Vidéos (démo + soutenance), slides, dépôt avant 23h59 |
 
-Suivi : **tableau Kanban** + dépôt Git avec **commits nominatifs** (traçabilité = note individuelle).
+Suivi : **trello* + dépôt Git avec **commits nominatifs** (traçabilité = note individuelle).
 
 ---
 
