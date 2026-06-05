@@ -46,7 +46,7 @@ neovolt-grid-project/
 ├── scripts/                  # Scripts partagés (diagnostic qualité, nettoyage...)
 ├── volet-cpid-pilotage/      # Chef de projet IT & Data (business case, gouvernance, pilotage)
 ├── volet-analyst/            # Data Analyst (EDA, segmentation, NLP, dashboards)
-├── volet-datascience/        # Data Scientist (prévision de consommation, analyse critique, MLOps)
+├── volet-datascience/        # Data Scientist (prévision de consommation,machine learning, analyse critique)
 ├── volet-ild-dataeng/        # Ingénierie Logiciel & Data Engineering (pipeline, API, Docker)
 ├── volet-cyber/              # Cybersécurité (analyse de risque, audit, SIEM, conformité)
 └── livrables-individuels/    # Journaux de bord, notes réflexives, évaluations par les pairs
