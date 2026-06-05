@@ -2,24 +2,48 @@
 
 ~16 slides. Une idée par slide, peu de texte, des visuels (figures du projet).
 
-| # | Slide | Contenu / visuel |
-|---|---|---|
-| 1 | **Titre** | « Néovolt Grid+ » + noms/spécialités de l'équipe + date |
-| 2 | **Le client & le problème** | Néovolt, infra critique, 6 problèmes (icônes) |
-| 3 | **Notre mission** | Cadrage + prototype en 1 semaine ; 2 cas d'usage retenus |
-| 4 | **Architecture d'ensemble** | Le schéma (diagramme Mermaid exporté) ; SCADA isolé |
-| 5 | **Données & qualité** | 10 jeux ; 512 986 relevés ; **98,46 % exploitable** après nettoyage |
-| 6 | **Socle data (ILD)** | Pipeline→entrepôt→API→Docker ; capture Swagger |
-| 7 | **Analyses (Analyst)** | Saisonnalité + corrélation météo réseau (fig. `03`) |
-| 8 | **Segmentation & réclamations** | 4 profils + thèmes réclamations (fig. `05`, `07`) |
-| 9 | **Détection de fraude (DS)** | Courbe d'évaluation (fig. `evaluation_fraude`) ; **lift ×10,8** |
-| 10 | **Éthique de la fraude** | Humain dans la boucle, faux positifs, AIPD |
-| 11 | **Sécurité (Cyber)** | L'attaque détectée (a.bernard) ; fig. `siem_brute_force` |
-| 12 | **Risque & conformité** | Matrice EBIOS ; RGPD / NIS 2 ; audit DevSecOps |
-| 13 | **Business case (CPID)** | 325 k€/450 k€ ; **ROI ~1,7 mois** ; fig. `roi_cumul` |
-| 14 | **Pilotage & gouvernance** | Lots/jalons ; RACI ; conduite du changement |
-| 15 | **Limites & suite** | Limites assumées ; phase 2 ; innovation (assistant IA) |
-| 16 | **Conclusion** | Prototype complet, sécurisé, piloté ; appel à décision |
+| #  | Slide                                        | Contenu / visuel                                                                                       |
+| -- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 1  | **Titre**                                    | « Néovolt Grid+ » + noms/spécialités de l'équipe + date                                                |
+| 2  | **Le client & le problème**                  | Néovolt, infrastructure critique, problèmes identifiés                                                 |
+| 3  | **Notre mission**                            | Cadrage + prototype en 1 semaine ; cas d'usage retenus                                                 |
+| 4  | **Architecture d'ensemble**                  | Schéma d'architecture ; SCADA isolé                                                                    |
+| 5  | **Données & qualité**                        | 10 jeux de données ; 512 986 relevés ; **98,46 % exploitables** après nettoyage                        |
+| 6  | **Socle data (ILD)**                         | Pipeline → entrepôt → API → Docker ; capture Swagger                                                   |
+| 7  | **Analyses (Data Analyst)**                  | Saisonnalité, corrélation météo/réseau, consommation par zone                                          |
+| 8  | **Segmentation & réclamations**              | 4 profils clients ; analyse NLP ; satisfaction 2,45/5                                                  |
+| 9  | **Prévision de consommation (Data Science)** | Démarche de modélisation ; variables météo ; comparaison des modèles ; métriques MAE, RMSE, MAPE et R² |
+| 10 | **Résultats Data Science**                   | Prévision des pics de consommation ; aide à la planification énergétique ; MAPE < 10 %                 |
+| 11 | **Sécurité (Cyber)**                         | Attaque détectée (a.bernard) ; figure SIEM ; supervision sécurité                                      |
+| 12 | **Risque & conformité**                      | Matrice EBIOS ; RGPD ; NIS 2 ; audit DevSecOps                                                         |
+| 13 | **Business case (CPID)**                     | Budget **360 k€** ; gains annuels **291 k€** ; ROI **≈ 20 mois**                                       |
+| 14 | **Pilotage & gouvernance**                   | Lots ; jalons ; RACI ; conduite du changement                                                          |
+| 15 | **Limites & perspectives**                   | Limites du prototype ; industrialisation ; détection d'anomalies comme évolution future                |
+| 16 | **Conclusion**                               | Prototype complet, sécurisé, piloté ; recommandation de passage en phase d'industrialisation           |
 
-**Astuce :** réutiliser les figures déjà générées (`volet-*/figures/*.png`) et le schéma
-d'architecture. Garder un fil rouge : **donnée → décision → valeur, en sécurité**.
+## Fil rouge de la présentation
+
+**Donnée → Information → Décision → Valeur**
+
+1. Collecter et fiabiliser les données.
+2. Exploiter les données via API et dashboards.
+3. Anticiper la consommation grâce à la Data Science.
+4. Sécuriser l'ensemble de la plateforme.
+5. Générer de la valeur métier et un pilotage fiable.
+
+## Visuels recommandés
+
+* Schéma d'architecture globale.
+* Swagger / API.
+* Dashboard Exploitation.
+* Dashboard Finance.
+* Dashboard Relation Client.
+* Capture du notebook Data Science.
+* Résultats de métriques (MAE, RMSE, MAPE, R²).
+* Figure SIEM.
+* Dashboard de pilotage.
+* Tableau du business case.
+
+## Message final
+
+« Néovolt Grid+ démontre qu'il est possible de transformer des données dispersées en un système cohérent permettant d'améliorer la qualité des données, d'anticiper la consommation énergétique, de renforcer la sécurité et d'améliorer la prise de décision. »

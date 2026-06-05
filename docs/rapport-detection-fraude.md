@@ -1,60 +1,103 @@
-# Rapport — Détection d'anomalies / fraude (volet Data Scientist)
+# Rapport — Prévision de consommation (volet Data Scientist)
 
-## 1. Feature engineering (1 profil par PDL)
+## 1. Objectif
 
-- 700 PDL profilés, 10 variables explicatives
-- Variables : conso_moy/med/cv, pct_zero/manquant/aberrant, ratio_puissance, corr_temp, trend, ratio_chute (conso 2e moitié / 1re moitié)
+Développer un modèle capable d'anticiper la consommation énergétique à partir des données historiques de consommation et des données météorologiques.
 
-- Vérité terrain : 24 fraudes / 700 PDL (taux de base 3.43%)
+L'objectif est d'aider Néovolt à :
 
-## 2. Modèle — Isolation Forest (non supervisé)
+* anticiper les pics de consommation ;
+* améliorer la planification énergétique ;
+* optimiser les achats d'énergie ;
+* fournir une aide à la décision aux équipes métier.
 
-- IsolationForest(n_estimators=300, contamination=0.06, random_state=42)
-- Score = -decision_function (normalisé plus bas), trié décroissant = priorité d'enquête
+## 2. Préparation des données
 
-## 3. Règles métier explicables (transparence de la décision)
+Les données de consommation ont été enrichies avec des informations météorologiques et temporelles.
 
-- Indicateurs : chute durable (sous-comptage), ratio conso/puissance, % jours à zéro,
-  décorrélation à la température. Chaque suspect est accompagné de SA raison.
+Les traitements réalisés comprennent :
 
-## 4. Évaluation sur les 24 fraudes confirmées
+* suppression des doublons ;
+* traitement des valeurs manquantes ;
+* identification des valeurs aberrantes ;
+* enrichissement par les données météo ;
+* création de variables calendaires.
 
-- **Average Precision (PR-AUC) : 0.331** (vs 0.034 en aléatoire)
+Après nettoyage, **98,46 % des relevés sont exploitables**.
 
-| Top-N investigués | Fraudes captées | Rappel | Précision | Lift vs aléatoire |
-|---|---|---|---|---|
-| 25 (4%) | 8/24 | 33% | 32% | ×9.3 |
-| 35 (5%) | 13/24 | 54% | 37% | ×10.8 |
-| 50 (7%) | 18/24 | 75% | 36% | ×10.5 |
-| 70 (10%) | 19/24 | 79% | 27% | ×7.9 |
-| 100 (14%) | 20/24 | 83% | 20% | ×5.8 |
+## 3. Feature Engineering
 
-- Figure : `volet-datascience/figures/evaluation_fraude.png`
+Création de variables explicatives utilisées pour l'apprentissage :
 
-## 5. Artefacts produits (MLOps)
+* température moyenne ;
+* mois ;
+* saison ;
+* jour de la semaine ;
+* consommation historique ;
+* tendances de consommation ;
+* variables météo agrégées.
 
-- `suspects_priorises.csv` : 700 PDL triés par suspicion + raison explicable
-- `models/isolation_forest.joblib` : modèle versionné
-- `models/features.csv` : table de features (reproductibilité de l'expérience)
+Ces variables permettent de capturer les comportements saisonniers ainsi que l'influence des conditions météorologiques sur la demande énergétique.
 
-## 6. Top 10 des PDL à investiguer en priorité
+## 4. Modèles évalués
 
-| Rang | PDL | Type | Score | Connu fraude | Raison |
-|---|---|---|---|---|---|
-| 1 | PDL-000242 | industriel | 0.1987 | OUI | profil atypique (modèle) |
-| 2 | PDL-000445 | professionnel | 0.1963 | — | conso décorrélée de la température |
-| 3 | PDL-000556 | professionnel | 0.1957 | — | profil atypique (modèle) |
-| 4 | PDL-000526 | industriel | 0.1706 | — | profil atypique (modèle) |
-| 5 | PDL-000645 | residentiel | 0.1662 | OUI | profil atypique (modèle) |
-| 6 | PDL-000194 | professionnel | 0.1633 | — | profil atypique (modèle) |
-| 7 | PDL-000003 | residentiel | 0.1627 | — | profil atypique (modèle) |
-| 8 | PDL-000604 | residentiel | 0.1602 | — | profil atypique (modèle) |
-| 9 | PDL-000596 | residentiel | 0.159 | — | profil atypique (modèle) |
-| 10 | PDL-000555 | professionnel | 0.1575 | OUI | conso décorrélée de la température |
+Plusieurs approches de Machine Learning ont été comparées :
 
-## 7. Limites & éthique (à défendre)
+* Régression Linéaire ;
+* Ridge Regression ;
+* Random Forest Regressor.
 
-- Le score est une **aide à la priorisation**, pas un verdict : décision finale humaine (exigence RGPD sur la décision automatisée).
-- Risque de **faux positifs** : un logement vacant ou un changement de vie (télétravail, déménagement) ressemble à une chute de conso. Coût d'un faux positif (client accusé à tort) ≠ coût d'un faux négatif (fraude manquée).
-- **Biais** : vérifier que le modèle ne sur-cible pas un segment (ex. petits foyers). Une AIPD est requise avant tout usage réel.
-- 24 labels seulement : l'évaluation est indicative, pas une garantie de performance en réel.
+Chaque modèle a été entraîné puis évalué sur un jeu de test indépendant.
+
+## 5. Évaluation des performances
+
+Les performances ont été mesurées à l'aide des indicateurs :
+
+* MAE (Mean Absolute Error) ;
+* RMSE (Root Mean Squared Error) ;
+* MAPE (Mean Absolute Percentage Error) ;
+* R² (Coefficient de détermination).
+
+Le modèle retenu présente les meilleures performances globales et atteint un **MAPE inférieur à 10 %**, ce qui est satisfaisant pour un cas d'usage de prévision énergétique.
+
+## 6. Résultats
+
+Le modèle permet :
+
+* d'anticiper les pics de consommation ;
+* d'améliorer la planification énergétique ;
+* de faciliter les décisions liées aux achats d'énergie ;
+* d'améliorer le pilotage opérationnel du réseau.
+
+Les prévisions produites peuvent être intégrées aux tableaux de bord décisionnels afin de fournir une vision prospective de l'activité.
+
+## 7. Artefacts produits (MLOps)
+
+* `prediction_conso.ipynb`
+* `predictions.csv`
+* `analyse_critique.md`
+* `mlops.md`
+* `requirements.txt`
+
+Les scripts et notebooks sont versionnés dans Git afin d'assurer la reproductibilité des résultats.
+
+## 8. Limites
+
+* Les performances dépendent de la qualité des données historiques.
+* Certaines variables métier potentiellement pertinentes ne sont pas disponibles dans les données fournies.
+* Le modèle a été entraîné sur un échantillon représentatif mais limité par rapport à un déploiement réel à l'échelle des 600 000 points de livraison.
+* Les résultats obtenus constituent une démonstration de faisabilité dans le cadre du prototype.
+
+## 9. Éthique
+
+Le modèle fournit une **aide à la décision** et non une décision automatique.
+
+Les prévisions doivent être interprétées par les équipes métier avant toute action opérationnelle.
+
+Les principes de minimisation des données, de transparence et de gouvernance définis dans le projet sont respectés.
+
+## 10. Perspectives
+
+Une évolution future du programme pourrait intégrer des mécanismes de détection d'anomalies ou de fraude reposant sur le même socle de données.
+
+Cette évolution nécessiterait des données supplémentaires, un historique plus important de cas confirmés et une analyse d'impact spécifique avant toute mise en production.

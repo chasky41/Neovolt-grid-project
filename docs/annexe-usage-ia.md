@@ -12,7 +12,7 @@ rédacteur assistant**, sous supervision humaine constante.
 |---|---|---|
 | Analyse du sujet & cadrage | Synthèse du dossier de cas, structuration de la note de cadrage | Relecture, validation du périmètre et des hypothèses |
 | Code (pipeline, API, modèles, analyses) | Génération et refactorisation de code Python | Exécution, tests, lecture ligne à ligne, correction de bugs |
-| Analyses & modèles | Proposition de features, choix de méthodes (Isolation Forest, KMeans) | Vérification des résultats, correction du piège de corrélation, choix des features métier |
+| Analyses & modèles | Proposition de features, préparation des données, comparaison de modèles de Machine Learning | Vérification des résultats, correction du piège de corrélation, choix des variables métier et validation des performances |
 | Documentation | Rédaction des rapports et README | Vérification des chiffres, ajustement du discours métier |
 | Sécurité | Règles de détection, structure EBIOS/AIPD | Validation de la cohérence avec le cas Néovolt |
 
@@ -28,6 +28,6 @@ rédacteur assistant**, sous supervision humaine constante.
   case explicitées, performance indicative).
 
 ## Décisions humaines non déléguées
-Le choix du périmètre, la priorisation (fraude avant prévision), les arbitrages éthiques
+Le choix du périmètre, la priorisation (prévision de consommation), les arbitrages éthiques
 (humain dans la boucle, minimisation), et l'interprétation métier des résultats sont des
 **décisions de l'équipe**, éclairées mais non remplacées par l'IA.
