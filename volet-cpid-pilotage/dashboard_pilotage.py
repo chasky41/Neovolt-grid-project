@@ -27,6 +27,7 @@ OUT = os.path.join(HERE, "dashboard_pilotage.html")
 
 
 # --- État du prototype (sprint) : % d'avancement par lot ---------------------
+
 lots = [
     "L0 Cadrage",
     "L1 Plateforme data",
@@ -40,21 +41,25 @@ lots = [
 avancement = [
     100,  # cadrage réalisé
     80,   # socle data partiellement réalisé
-    100,  # prévision réalisée dans l'US6
-    60,   # dashboards en cours / volet DA
+    100,  # prévision réalisée
+    60,   # dashboards en cours
     70,   # sécurité en cours
-    20,   # anomalies/fraude uniquement en perspective
-    40,   # préparation du déploiement / MLOps
+    20,   # étude exploratoire anomalies/fraude
+    40,   # préparation du déploiement
 ]
 
 
 # --- Budget ------------------------------------------------------------------
-# Cohérent avec le business case CPID : budget programme estimé à 360 k€
+
+# Cohérent avec le business case CPID
+# Budget initial estimé : 360 k€
+
 ENVELOPPE = 360_000
-ESTIME = 325_000
+ESTIME = 360_000
 
 
 # --- Risques (probabilité 1-5, gravité 1-5) ----------------------------------
+
 risques = [
     ("R1 Qualité données", 4, 4),
     ("R2 Modèle prévision peu fiable", 3, 4),
@@ -66,6 +71,7 @@ risques = [
 
 
 def main():
+
     fig = make_subplots(
         rows=2,
         cols=2,
@@ -95,16 +101,22 @@ def main():
             text=[f"{a}%" for a in avancement],
             textposition="auto",
         ),
-        1,
-        1,
+        row=1,
+        col=1,
     )
+
     fig.update_xaxes(range=[0, 100], row=1, col=1)
+
+    # Budget
 
     fig.add_trace(
         go.Indicator(
             mode="gauge+number",
             value=ESTIME,
-            number={"prefix": "", "suffix": " €", "valueformat": ",.0f"},
+            number={
+                "suffix": " €",
+                "valueformat": ",.0f",
+            },
             gauge={
                 "axis": {"range": [0, ENVELOPPE]},
                 "bar": {"color": "#27ae60"},
@@ -113,11 +125,15 @@ def main():
                     "value": ENVELOPPE,
                 },
             },
-            title={"text": "Estimé vs budget 360 k€"},
+            title={
+                "text": "Budget programme estimé : 360 k€"
+            },
         ),
-        1,
-        2,
+        row=1,
+        col=2,
     )
+
+    # Risques
 
     fig.add_trace(
         go.Scatter(
@@ -135,18 +151,34 @@ def main():
                 cmax=25,
             ),
         ),
-        2,
-        1,
+        row=2,
+        col=1,
     )
 
-    fig.update_xaxes(title_text="Probabilité", range=[0, 6], row=2, col=1)
-    fig.update_yaxes(title_text="Gravité", range=[0, 6], row=2, col=1)
+    fig.update_xaxes(
+        title_text="Probabilité",
+        range=[0, 6],
+        row=2,
+        col=1,
+    )
+
+    fig.update_yaxes(
+        title_text="Gravité",
+        range=[0, 6],
+        row=2,
+        col=1,
+    )
+
+    # Performance du modèle de prévision
 
     fig.add_trace(
         go.Indicator(
             mode="number+delta",
             value=8.64,
-            number={"suffix": " %", "valueformat": ".2f"},
+            number={
+                "suffix": " %",
+                "valueformat": ".2f",
+            },
             delta={
                 "reference": 10,
                 "decreasing": {"color": "green"},
@@ -157,8 +189,8 @@ def main():
                 "text": "MAPE du modèle de prévision<br>objectif : < 10 %"
             },
         ),
-        2,
-        2,
+        row=2,
+        col=2,
     )
 
     fig.update_layout(
@@ -170,7 +202,12 @@ def main():
         margin=dict(t=90),
     )
 
-    fig.write_html(OUT, include_plotlyjs=True, full_html=True)
+    fig.write_html(
+        OUT,
+        include_plotlyjs=True,
+        full_html=True,
+    )
+
     print(f">> Dashboard de pilotage : {OUT}")
 
 
